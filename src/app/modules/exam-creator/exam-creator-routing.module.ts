@@ -6,6 +6,12 @@ const routes: Routes = [
   {
     path: '',
     component: ExamCreatorTemplateComponent,
+    children: [
+      {
+        path: 'list/:documentId',
+        loadChildren: () => import('./modules/subject/subject.module').then(module => module.SubjectModule),
+      },
+    ]
   }
 ];
 

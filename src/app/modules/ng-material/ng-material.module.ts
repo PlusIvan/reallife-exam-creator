@@ -9,6 +9,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
 
 const ngModules = [
   MatSidenavModule,
@@ -20,6 +21,7 @@ const ngModules = [
   MatChipsModule,
   MatIconModule,
   MatToolbarModule,
+  MatCardModule,
 ];
 
 

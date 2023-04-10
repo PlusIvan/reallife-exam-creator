@@ -1,3 +1,3 @@
 <mat-nav-list>
-    <mat-list-item [routerLink]="menu.link" *ngFor="let menu of list"><mat-icon matListItemIcon>description</mat-icon> {{menu.label}}</mat-list-item>
+    <mat-list-item [routerLink]="menu.link" *ngFor="let menu of list"><mat-icon matListItemIcon>{{menu.icon || 'description'}}</mat-icon> {{menu.label}}</mat-list-item>
 </mat-nav-list>

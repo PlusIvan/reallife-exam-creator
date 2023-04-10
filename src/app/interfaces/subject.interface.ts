@@ -1,15 +1,12 @@
 export namespace ISubject {
     export interface RootObject {
-        part?: number;
-        phase?: number;
-        question: string;
-        type: string;
-        year: number;
-        multipleChoice?: boolean;
-        multipleChoiceImage?: boolean;
-        choices?: Array<string>;
-        subquestions?: Array<ISubquestion>;
         image?: string;
+        phase?: string;
+        question?: string;
+        year: number;
+        statement?: string;
+        choices?: Array<string>;
+        subquestions?: Array<{ choices?: Array<string>; question?: string; image?: string; }>
     }   
 
     export interface ISubquestion {
@@ -19,5 +16,9 @@ export namespace ISubject {
         multipleChoice: boolean;
         choices: Array<string>;
     }
-
+    export interface Document {
+        image: string;
+        last_revised: Date;
+        name: string;
+    }
 }

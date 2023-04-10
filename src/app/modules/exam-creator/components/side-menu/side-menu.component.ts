@@ -7,14 +7,14 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['./side-menu.component.scss']
 })
 export class SideMenuComponent implements OnInit {
-  list: Array<{ label: string; link: string; id?: string; }> = [];
+  list: Array<{ label: string; link: string; id?: string; icon?: string; }> = [];
   constructor(private _fireStore: AngularFirestore){}
   ngOnInit(): void {
     this._fireStore.collection('/subjects').get().subscribe({
       next: (snapshot) => {
         this.list = snapshot.docs.map((doc) => { 
-          const data = doc.data() as { name: string; image: string; };
-          return { label: data.name, link: `/${doc.id}`, id: doc.id };
+          const data = doc.data() as { name: string; image: string; icon?: string };
+          return { label: data.name, link: `list/${doc.id}`, id: doc.id, icon:data.icon  };
         });
       }
     })

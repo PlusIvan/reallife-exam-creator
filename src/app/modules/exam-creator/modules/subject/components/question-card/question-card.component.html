@@ -1,0 +1,72 @@
+<!-- <div class="bg-neutral-200 w-full rounded shadow shadow-black">
+    <div class="px-4 py-1">
+        <p>{{ex?.year}} - <span>{{ex?.phase}}</span></p>
+    </div>
+    
+    <div class="p-4">
+        <p></p>
+    </div>
+</div> -->
+<mat-card class="group/item">
+    <mat-card-header>
+        <mat-card-title>{{ex?.year}}<span class="uppercase" *ngIf="ex?.phase"> - {{ex?.phase}}</span></mat-card-title>
+<!--         <mat-card-subtitle>
+            <mat-chip-set>
+                <mat-chip *ngIf="ex?.question">Question</mat-chip>
+                <mat-chip *ngIf="ex?.statement">Statement</mat-chip>
+                <mat-chip *ngIf="ex?.subquestions">Subquestions</mat-chip>
+                <mat-chip *ngIf="ex?.choices">Choices</mat-chip> 
+                <mat-chip *ngIf="ex?.image">Image</mat-chip>                           
+            </mat-chip-set>
+
+        </mat-card-subtitle> -->
+    </mat-card-header>
+    <mat-card-content class="space-y-2">
+        <mat-expansion-panel hideToggle *ngIf="ex?.question">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Question
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>{{ex?.question}}</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle *ngIf="ex?.statement">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Statement
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>{{ex?.statement}}</p>
+            <img [src]="ex?.image" class="max-w-xl" *ngIf="ex?.image">
+        </mat-expansion-panel>
+        <mat-expansion-panel hideToggle *ngIf="ex?.subquestions">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Subquestions
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-container *ngFor="let x of ex?.subquestions; let subidx = index">
+                <ng-container *ngIf="x.question">
+                    <p>({{subidx + 1}}) <span class="font-bold">{{x.question}}</span></p>
+                </ng-container>
+                <div *ngIf="x.choices" class="space-y-1">
+                    <p *ngFor="let c of x.choices; let idx = index" class="space-x-3"><span>({{subidx+1}}.{{idx + 1}})</span> <span class="font-light">{{c}}</span></p>
+                </div>
+                <img [src]="x.image" *ngIf="x.image" class="max-w-xl">
+            </ng-container>
+        </mat-expansion-panel>
+<!--         <mat-expansion-panel hideToggle *ngIf="ex?.image">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Image
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <img [src]="ex?.image" class="max-w-xl">
+        </mat-expansion-panel> -->
+       <!--  <p class="max-h-12 overflow-hidden">{{ex?.question}}</p> -->
+    </mat-card-content>
+    <mat-card-actions class="space-x-2 invisible group-hover/item:visible">
+        <button mat-flat-button color="primary" (click)="select()">Select</button>
+        <button mat-stroked-button color="accent">View</button>
+    </mat-card-actions>
+</mat-card>
