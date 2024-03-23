@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { IDocument } from '../components/subject-template/subject.interface';
 import { ISubject } from 'src/app/interfaces/subject.interface';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class SubjectService {
   questionList: Array<ISubject.RootObject> = [];
   documentData: IDocument.RootObject | undefined = undefined;

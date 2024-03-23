@@ -1,0 +1,10 @@
+<app-preview>
+<!--     <p #pageContent *ngFor="let x of [1,2,3,4,5,6,7,8,9,5,4,3,3,9,10]">
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus consectetur blanditiis eaque autem, doloremque optio perferendis similique laborum dolore accusamus id eius exercitationem ipsa excepturi ipsum hic quos, nam enim?
+</p> -->
+<ng-container *ngFor="let x of list">
+    <div #pageContent class="">
+        <p>{{x.question}}</p>
+    </div>
+</ng-container>
+</app-preview>

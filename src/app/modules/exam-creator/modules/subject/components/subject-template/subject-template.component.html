@@ -1,16 +1,51 @@
 
 <div class="h-screen">
     <mat-toolbar color="primary">
-        <span>{{ documentName || '...' }}</span>
+        <mat-toolbar-row>
+            <span>{{ documentName || '...' }}</span>            
+        </mat-toolbar-row>
+
+        <mat-toolbar-row class="justify-between flex">
+            <div>
+                <button mat-button routerLink="questions"><mat-icon>quiz</mat-icon> Questions</button>
+                <button mat-button routerLink="preview"><mat-icon>preview</mat-icon> Preview</button>
+                <button mat-button routerLink="export"><mat-icon>picture_as_pdf</mat-icon> Export</button>                
+            </div>
+            <div>
+                <button [matMenuTriggerFor]="menu" mat-button [disabled]="!selectedLength" [matBadgeHidden]="!selectedLength" [matBadge]="selectedLength" matBadgePosition="before" matBadgeColor="accent"><mat-icon>format_list_bulleted</mat-icon> Selected</button>                
+                <mat-menu #menu="matMenu">
+                    <button [matMenuTriggerFor]="submenu" mat-menu-item *ngFor="let x of selectedList; let idx = index;">({{ idx+1 }}) {{x.year}} - {{x.phase}}</button>
+                </mat-menu>
+                <mat-menu #submenu="matMenu">
+                    <button mat-menu-item>Remove</button>
+                    <button mat-menu-item>View</button>
+                </mat-menu>
+            </div>
+        </mat-toolbar-row>
     </mat-toolbar>
-    <div class="h-auto flex space-x-1">
-        <div class="space-y-2 max-w-lg overflow-auto max-h-screen p-1">
+    <div class="h-full flex">
+        <mat-sidenav-container class="w-full">
+<!--             <mat-sidenav opened mode="side">
+                <mat-nav-list>
+                    <mat-list-item routerLink="questions"><mat-icon matListItemIcon>quiz</mat-icon> Questions</mat-list-item>
+                    <mat-list-item routerLink="preview"><mat-icon matListItemIcon>preview</mat-icon> Preview</mat-list-item>
+                    <mat-list-item><mat-icon matListItemIcon>picture_as_pdf</mat-icon> Export</mat-list-item>
+                </mat-nav-list>                
+            </mat-sidenav> -->
+            <!-- <mat-sidenav opened mode="side" position="end">End content</mat-sidenav> -->
+            
+               <!--  <app-preview [pageSize]="'A4'">
+                
+            </app-preview> -->
+           <router-outlet></router-outlet>
+        </mat-sidenav-container>
+<!--         <div class="space-y-2 max-w-lg overflow-auto max-h-screen p-1">
             <div *ngFor="let q of list">
                 <question-card [ex]="q"></question-card>                
             </div>
         </div>
         <div class=" h-full w-full">
             <app-pdf-view></app-pdf-view>
-        </div>
+        </div> -->
     </div>
 </div>

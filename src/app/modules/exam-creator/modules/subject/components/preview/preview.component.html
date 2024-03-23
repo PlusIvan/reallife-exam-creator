@@ -1,0 +1,12 @@
+<!-- display: none style will any child that does not have #pageContent local variable defined -->
+<mat-toolbar>
+	<button mat-button (click)="export()">Export</button>
+</mat-toolbar>
+<div class="pt-4">
+	<div class="content-wrapper" #contentWrapper style="display: none">
+		<ng-content></ng-content>
+	</div>
+	<div class="paginated-view" #paginatedView id="test">
+
+	</div>	
+</div>

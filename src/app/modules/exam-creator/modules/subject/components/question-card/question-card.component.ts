@@ -17,6 +17,6 @@ export class QuestionCardComponent implements OnInit {
   }
   select(): void {
     this._pdf.pdfContent.push(this.ex!);
-    this._pdf.updateContent();
+    //this._pdf.updateContent();
   }
 }
